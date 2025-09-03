@@ -1,0 +1,305 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Mail, Phone, MapPin, Download, ExternalLink, Sparkles, ChevronRight, BookOpen, Award, Languages, Heart } from "lucide-react";
+
+// 🚀 How to use
+// 1) Drop this file into a React app (e.g., src/App.jsx) and ensure Tailwind + shadcn/ui are configured.
+// 2) Put your resume PDF at /public/resume.pdf or update the href below.
+// 3) Deploy anywhere (Netlify, Vercel, GitHub Pages).
+
+// 🎨 Color system
+// We use vibrant gradients + glassmorphism. Tailwind utilities keep it tidy.
+
+const Section = ({ id, title, icon: Icon, children }) => (
+  <section id={id} className="scroll-mt-24">
+    <Card className="border-0 bg-white/10 dark:bg-black/20 backdrop-blur-xl shadow-xl rounded-2xl">
+      <CardHeader className="flex flex-row items-center gap-3">
+        <div className="p-2 rounded-xl bg-gradient-to-tr from-fuchsia-500 via-pink-500 to-amber-400 text-white shadow">
+          <Icon className="w-5 h-5" />
+        </div>
+        <CardTitle className="text-xl md:text-2xl font-semibold tracking-tight">
+          {title}
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="pt-0">{children}</CardContent>
+    </Card>
+  </section>
+);
+
+export default function RamalaxmiPortfolio() {
+  const name = "NAYANA RAMA LAXMI";
+  const role = "Aspiring Software Developer | B.Sc (Chemistry)";
+  const about = `I’m an enthusiastic learner who loves solving problems and building useful things. I’m seeking an opportunity where creativity, innovation, and continuous improvement are valued—so I can grow while contributing to the team.`;
+
+  const contact = {
+    phone: "8328297397",
+    email: "ramalaxminayana000@gmail.com",
+    address:
+      "D/O Mallibabu, 000, Kesavarayunipalem, Laveru, Srikakulam, Andhra Pradesh – 532403",
+    dob: "22 Jan 2006",
+  };
+
+  const techSkills = ["C", "Java", "Python", "HTML"];
+  const softSkills = ["Communication", "Leadership", "Adaptability"];
+
+  const academics = [
+    {
+      course: "B.Sc (Chemistry)",
+      place: "Sri Aditya Degree College, Kakinada (Srikakulam)",
+      meta: "CGPA 8.8/10 up to 4th semester",
+      year: "2023 – Present",
+    },
+    {
+      course: "Intermediate – M.P.C",
+      place: "A.P. Model School & Junior College, Tamada, Srikakulam",
+      meta: "91.4%",
+      year: "2023",
+    },
+    {
+      course: "SSC",
+      place: "A.P. Model School, Tamada, Srikakulam",
+      meta: "CGPA 9.7/10",
+      year: "2021",
+    },
+  ];
+
+  const certifications = [
+    "C Language – Cisco NetAcad",
+    "Basics of Python – Infosys Springboard",
+    "Essentials of GenAI – Microsoft",
+    "MePro Pearson – English Communication Skills",
+    "IT/ITeS – Domestic Data Entry Operator – BSE, Andhra Pradesh",
+    "Junior Software Developer – Board of Intermediate Education, A.P.",
+  ];
+
+  const languages = ["Telugu", "English"];
+  const hobbies = ["Cooking", "Listening to music"];
+
+  const nav = [
+    { id: "about", label: "About" },
+    { id: "skills", label: "Skills" },
+    { id: "education", label: "Education" },
+    { id: "certs", label: "Certifications" },
+    { id: "contact", label: "Contact" },
+  ];
+
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  return (
+    <div className="min-h-screen text-slate-900 dark:text-slate-100 bg-gradient-to-br from-rose-50 via-fuchsia-50 to-amber-50 dark:from-slate-950 dark:via-violet-950 dark:to-fuchsia-950">
+      {/* Top gradient ribbons */}
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full blur-3xl opacity-30 bg-gradient-to-br from-fuchsia-500 via-pink-500 to-amber-400" />
+        <div className="absolute -bottom-24 -right-24 h-[28rem] w-[28rem] rounded-full blur-3xl opacity-30 bg-gradient-to-br from-violet-500 via-indigo-500 to-cyan-400" />
+      </div>
+
+      {/* Nav */}
+      <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/30 dark:supports-[backdrop-filter]:bg-black/30 bg-white/10 dark:bg-black/10 border-b border-white/20 dark:border-white/10">
+        <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-2 font-semibold tracking-tight">
+            <Sparkles className="h-5 w-5" />
+            <span>{name.split(" ")[0]}<span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 to-amber-500">{" "}{name.split(" ").slice(1).join(" ")}</span></span>
+          </div>
+          <nav className="hidden md:flex items-center gap-1">
+            {nav.map((n) => (
+              <Button key={n.id} variant="ghost" className="rounded-full" onClick={() => scrollTo(n.id)}>
+                {n.label}
+              </Button>
+            ))}
+            <a href="/resume.pdf" target="_blank" rel="noreferrer" className="ml-1">
+              <Button className="rounded-full"><Download className="w-4 h-4 mr-2" /> Resume</Button>
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <main className="mx-auto max-w-6xl px-4 py-10 md:py-16 space-y-10 md:space-y-16">
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="grid md:grid-cols-2 gap-6 items-center"
+        >
+          <div className="space-y-6">
+            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+              {name}
+              <span className="block text-lg md:text-2xl font-medium mt-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-fuchsia-500 to-violet-500">
+                {role}
+              </span>
+            </h1>
+            <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 max-w-prose">
+              {about}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {techSkills.map((s) => (
+                <Badge key={s} className="rounded-full bg-gradient-to-r from-amber-500 to-fuchsia-500 text-white border-0 shadow">
+                  {s}
+                </Badge>
+              ))}
+            </div>
+            <div className="flex gap-3">
+              <a href="#contact">
+                <Button size="lg" className="rounded-full">
+                  Get in touch <ChevronRight className="w-4 h-4 ml-2" />
+                </Button>
+              </a>
+              <a href="/resume.pdf" target="_blank" rel="noreferrer">
+                <Button size="lg" variant="outline" className="rounded-full">
+                  <Download className="w-4 h-4 mr-2" />Download CV
+                </Button>
+              </a>
+            </div>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="relative"
+          >
+            <div className="aspect-square rounded-3xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-amber-400 p-1 shadow-2xl">
+              <div className="h-full w-full rounded-2xl bg-white/60 dark:bg-black/40 backdrop-blur-xl grid place-items-center text-center p-8">
+                <div>
+                  <div className="text-7xl md:text-8xl">✨</div>
+                  <p className="mt-4 text-sm opacity-80">Curious mind, clean code, colorful UI.</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.section>
+
+        {/* About */}
+        <Section id="about" title="About" icon={BookOpen}>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="md:col-span-2 space-y-4">
+              <p>
+                I’m currently pursuing <b>B.Sc (Chemistry)</b> and actively learning software development.
+                My core stack includes <b>C</b>, <b>Java</b>, <b>Python</b>, and <b>HTML</b>. I value teamwork,
+                proactive communication, and adaptability.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {softSkills.map((s) => (
+                  <Badge key={s} variant="secondary" className="rounded-full">
+                    {s}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-3 text-sm">
+              <div className="flex items-start gap-2"><Sparkles className="w-4 h-4 mt-0.5" /><span>Career Goal: Grow with a team that values creativity & continuous improvement.</span></div>
+              <div className="flex items-start gap-2"><Heart className="w-4 h-4 mt-0.5" /><span>Hobbies: {hobbies.join(", ")}</span></div>
+              <div className="flex items-start gap-2"><Languages className="w-4 h-4 mt-0.5" /><span>Languages: {languages.join(", ")}</span></div>
+              <div className="flex items-start gap-2"><MapPin className="w-4 h-4 mt-0.5" /><span>{contact.address}</span></div>
+            </div>
+          </div>
+        </Section>
+
+        {/* Skills */}
+        <Section id="skills" title="Skills" icon={Sparkles}>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="bg-white/60 dark:bg-white/5 border-white/20">
+              <CardHeader>
+                <CardTitle>Technical</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-wrap gap-3">
+                {techSkills.map((s) => (
+                  <div key={s} className="px-3 py-1.5 rounded-full border border-white/30 bg-white/30 dark:bg-white/10 backdrop-blur text-sm">
+                    {s}
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+            <Card className="bg-white/60 dark:bg-white/5 border-white/20">
+              <CardHeader>
+                <CardTitle>Behavioral</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-wrap gap-3">
+                {softSkills.map((s) => (
+                  <div key={s} className="px-3 py-1.5 rounded-full border border-white/30 bg-white/30 dark:bg-white/10 backdrop-blur text-sm">
+                    {s}
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </Section>
+
+        {/* Education */}
+        <Section id="education" title="Education" icon={BookOpen}>
+          <div className="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:rounded-full before:bg-gradient-to-b from-amber-400 via-fuchsia-500 to-violet-500">
+            <ol className="space-y-6">
+              {academics.map((a, i) => (
+                <li key={i} className="grid md:grid-cols-6 gap-2">
+                  <div className="md:col-span-4">
+                    <h3 className="font-semibold">{a.course}</h3>
+                    <p className="text-sm opacity-80">{a.place}</p>
+                  </div>
+                  <div className="md:col-span-2 text-sm md:text-right opacity-80">{a.year}</div>
+                  <div className="md:col-span-6 text-sm opacity-90">{a.meta}</div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </Section>
+
+        {/* Certifications */}
+        <Section id="certs" title="Certifications" icon={Award}>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {certifications.map((c, i) => (
+              <Card key={i} className="bg-white/60 dark:bg-white/5 border-white/20">
+                <CardContent className="p-4 flex items-center gap-3">
+                  <Award className="w-5 h-5" />
+                  <span className="text-sm">{c}</span>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </Section>
+
+        {/* Contact */}
+        <Section id="contact" title="Contact" icon={Phone}>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="space-y-3">
+              <a href={`tel:${contact.phone}`} className="flex items-center gap-2 group">
+                <div className="p-2 rounded-lg bg-white/50 dark:bg-white/10">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <span className="group-hover:underline">{contact.phone}</span>
+              </a>
+              <a href={`mailto:${contact.email}`} className="flex items-center gap-2 group">
+                <div className="p-2 rounded-lg bg-white/50 dark:bg-white/10">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <span className="group-hover:underline">{contact.email}</span>
+              </a>
+              <div className="flex items-center gap-2">
+                <div className="p-2 rounded-lg bg-white/50 dark:bg-white/10">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <span>{contact.address}</span>
+              </div>
+            </div>
+            <form className="md:col-span-2 grid grid-cols-1 gap-3">
+              <input className="px-4 py-3 rounded-xl bg-white/70 dark:bg-white/10 border border-white/20 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Your name" />
+              <input className="px-4 py-3 rounded-xl bg-white/70 dark:bg-white/10 border border-white/20 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Email address" type="email" />
+              <textarea rows={4} className="px-4 py-3 rounded-xl bg-white/70 dark:bg-white/10 border border-white/20 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Your message" />
+              <Button className="rounded-full w-fit">Send <ExternalLink className="w-4 h-4 ml-2" /></Button>
+            </form>
+          </div>
+          <p className="mt-3 text-xs opacity-70">Date of Birth: {contact.dob}</p>
+        </Section>
+
+        {/* Footer */}
+        <footer className="pt-10 pb-20 text-center text-sm opacity-80">
+          © {new Date().getFullYear()} {name}. Built with ❤️ and vibrant gradients.
+        </footer>
+      </main>
+    </div>
+  );
+}
