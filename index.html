@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nayana Rama Laxmi · Portfolio</title>
+  <meta name="description" content="Portfolio of Nayana Rama Laxmi — BSc (Chemistry) student & budding developer skilled in C, Java, Python, and HTML." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1:#0f0c29; /* deep indigo */
+      --bg-2:#302b63; /* royal purple */
+      --bg-3:#24243e; /* midnight */
+      --text:#f8f9fb;
+      --muted:#cfd3ff;
+      --glass:rgba(255,255,255,0.1);
+      --card:rgba(255,255,255,0.08);
+      --stroke:rgba(255,255,255,0.18);
+      --accent:#7CFFCB;   /* mint */
+      --accent-2:#FF6EC7; /* neon pink */
+      --accent-3:#00D1FF; /* neon cyan */
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--text);
+      background: linear-gradient(120deg,var(--bg-1),var(--bg-2),var(--bg-3));
+      background-size: 200% 200%;
+      animation: bgShift 12s ease-in-out infinite;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    }
+    @keyframes bgShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+    /* floating gradient blobs */
+    .blob{position:fixed; filter:blur(70px); opacity:.4; z-index:-1;}
+    .b1{width:420px;height:420px; background:radial-gradient(circle at 30% 30%, var(--accent), transparent 60%); top:-80px; left:-60px;}
+    .b2{width:480px;height:480px; background:radial-gradient(circle at 70% 60%, var(--accent-2), transparent 60%); bottom:-120px; right:-60px;}
+    .b3{width:420px;height:420px; background:radial-gradient(circle at 40% 60%, var(--accent-3), transparent 60%); top:40%; left:-120px;}
+
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter: blur(12px);
+      background:linear-gradient(0deg, rgba(0,0,0,0.0), rgba(0,0,0,0.35));
+      border-bottom:1px solid var(--stroke);
+    }
+    .nav{max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 18px;}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px}
+    .brand-badge{width:36px;height:36px; display:grid; place-items:center; border-radius:12px; background:linear-gradient(135deg, var(--accent), var(--accent-3)); color:#0b1020; box-shadow: var(--shadow); font-family:"Space Grotesk", Inter, sans-serif; font-weight:700}
+    .nav a{color:var(--text); text-decoration:none; opacity:.9; margin-left:18px; font-weight:600}
+    .nav a:hover{opacity:1}
+
+    .container{max-width:1100px; margin:0 auto; padding:28px 18px}
+
+    /* hero */
+    .hero{display:grid; grid-template-columns: 1.1fr .9fr; gap:28px; align-items:center; padding:48px 0}
+    .card{background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius); box-shadow: var(--shadow)}
+    .hero .intro{padding:28px}
+    .kicker{display:inline-flex; gap:8px; align-items:center; padding:6px 12px; border:1px solid var(--stroke); background:linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03)); border-radius:999px; font-size:12px; text-transform:uppercase; letter-spacing:.12em}
+    h1{font-family:"Space Grotesk", Inter, sans-serif; font-weight:800; margin:14px 0 8px; font-size: clamp(32px, 6vw, 56px); line-height:1.02}
+    .subtitle{font-size:18px; color:var(--muted); margin-bottom:18px}
+    .cta{display:flex; gap:14px; flex-wrap:wrap; margin-top:18px}
+    .btn{border:none; cursor:pointer; padding:12px 18px; border-radius:14px; font-weight:800; letter-spacing:.3px}
+    .btn-primary{background:linear-gradient(135deg, var(--accent-2), var(--accent-3)); color:#0b1020}
+    .btn-ghost{background:transparent; border:1px solid var(--stroke); color:var(--text)}
+
+    .facts{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px; padding:18px}
+    .fact{padding:14px 16px; border-radius:14px; background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); border:1px dashed var(--stroke); font-size:14px}
+    .fact b{display:block; font-size:12px; opacity:.8; margin-bottom:6px}
+
+    /* badges & chips */
+    .chips{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{padding:8px 12px; border-radius:999px; border:1px solid var(--stroke); background:linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.02)); font-weight:600; font-size:14px}
+
+    /* sections */
+    section{scroll-margin-top:80px}
+    .section-title{display:flex; align-items:center; gap:12px; margin:6px 0 18px}
+    .section-title span{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--accent-2),var(--accent-3)); box-shadow:0 0 20px var(--accent-3)}
+    h2{font-family:"Space Grotesk", Inter, sans-serif; font-size: clamp(20px, 3.8vw, 34px); margin:0}
+
+    .grid{display:grid; gap:18px}
+    .grid-2{grid-template-columns: repeat(2, 1fr)}
+    .grid-3{grid-template-columns: repeat(3, 1fr)}
+
+    .tile{padding:18px; border-radius:var(--radius); background:var(--card); border:1px solid var(--stroke)}
+    .tile h3{margin:0 0 8px; font-size:18px}
+    .muted{color:var(--muted)}
+
+    /* timeline */
+    .timeline{position:relative; padding-left:22px}
+    .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:linear-gradient(var(--accent), var(--accent-3))}
+    .step{position:relative; margin-bottom:16px}
+    .step::before{content:""; position:absolute; left:-14px; top:4px; width:10px; height:10px; background:linear-gradient(135deg, var(--accent-2), var(--accent)); border-radius:50%; box-shadow:0 0 0 4px rgba(255,255,255,.06)}
+
+    .footer{
+      text-align:center; padding:36px 0; opacity:.9; border-top:1px solid var(--stroke);
+      background:linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0));
+    }
+
+    /* responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns: 1fr}
+      .grid-2{grid-template-columns: 1fr}
+      .grid-3{grid-template-columns: 1fr}
+      .facts{grid-template-columns: 1fr}
+      .nav .links{display:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- glowing blobs -->
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="brand-badge">NRL</div>
+        <div>Nayana Rama Laxmi</div>
+      </div>
+      <nav class="links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#certs">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="intro card">
+        <span class="kicker">BSc (Chemistry) • Aspiring Developer</span>
+        <h1>Hi, I'm <span style="background:linear-gradient(135deg,var(--accent-2),var(--accent-3)); -webkit-background-clip:text; background-clip:text; color:transparent;">Nayana Rama Laxmi</span></h1>
+        <p class="subtitle">I love building things and growing fast. I’m into programming, data entry workflows, and creative problem‑solving.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#contact">Hire Me</a>
+          <a class="btn btn-ghost" href="#projects" onclick="alert('Add projects later!')">View Projects</a>
+        </div>
+        <div style="height:14px"></div>
+        <div class="chips">
+          <span class="chip">C</span>
+          <span class="chip">Java</span>
+          <span class="chip">Python</span>
+          <span class="chip">HTML</span>
+          <span class="chip">Communication</span>
+          <span class="chip">Leadership</span>
+          <span class="chip">Adaptability</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="facts">
+          <div class="fact"><b>Location</b>Srikakulam, Andhra Pradesh (India)</div>
+          <div class="fact"><b>Phone</b><a href="tel:+918328297397" style="color:inherit; text-decoration:none">+91 83282 97397</a></div>
+          <div class="fact"><b>Email</b><a href="mailto:ramalaxminayana000@gmail.com" style="color:inherit; text-decoration:none">ramalaxminayana000@gmail.com</a></div>
+          <div class="fact"><b>Languages</b>Telugu, English</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-title"><span></span><h2>About</h2></div>
+      <div class="tile">
+        <p style="margin:0">To kick‑start my career at an organization that values creativity, innovation, and continuous improvement, where I can apply my skills and grow while contributing to the company’s goals.</p>
+      </div>
+    </section>
+
+    <section id="skills" style="margin-top:24px">
+      <div class="section-title"><span></span><h2>Technical & Behavioral Skills</h2></div>
+      <div class="grid grid-3">
+        <div class="tile">
+          <h3>Programming</h3>
+          <p class="muted">C, Java, Python, HTML</p>
+        </div>
+        <div class="tile">
+          <h3>Soft Skills</h3>
+          <p class="muted">Communication, Leadership, Adaptability</p>
+        </div>
+        <div class="tile">
+          <h3>Hobbies</h3>
+          <p class="muted">Cooking, Listening to music</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" style="margin-top:24px">
+      <div class="section-title"><span></span><h2>Education</h2></div>
+      <div class="tile timeline">
+        <div class="step">
+          <h3>BSc (Chemistry) — Sri Aditya Degree College, Kakinada (Srikakulam)</h3>
+          <div class="muted">Pursuing 3rd year • CGPA: 8.8/10 up to 4th semester</div>
+        </div>
+        <div class="step">
+          <h3>Intermediate (M.P.C) — A P Model School & Junior College, Tamada</h3>
+          <div class="muted">2023 • 91.4%</div>
+        </div>
+        <div class="step">
+          <h3>SSC — A P Model School, Tamada</h3>
+          <div class="muted">2021 • CGPA: 9.7/10</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certs" style="margin-top:24px">
+      <div class="section-title"><span></span><h2>Certifications</h2></div>
+      <div class="grid grid-2">
+        <div class="tile">
+          <h3>C Language</h3>
+          <div class="muted">Cisco NetAcad</div>
+        </div>
+        <div class="tile">
+          <h3>Python (Basics)</h3>
+          <div class="muted">Infosys Springboard</div>
+        </div>
+        <div class="tile">
+          <h3>Essentials of GenAI</h3>
+          <div class="muted">Microsoft</div>
+        </div>
+        <div class="tile">
+          <h3>English Communication Skills</h3>
+          <div class="muted">Mepro Pearson</div>
+        </div>
+        <div class="tile">
+          <h3>IT/ITeS — Domestic Data Entry Operator</h3>
+          <div class="muted">Board of Secondary Education, Andhra Pradesh</div>
+        </div>
+        <div class="tile">
+          <h3>Junior Software Developer</h3>
+          <div class="muted">Board of Intermediate Education, Andhra Pradesh</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:24px">
+      <div class="section-title"><span></span><h2>Contact</h2></div>
+      <div class="grid grid-2">
+        <div class="tile">
+          <h3>Get in touch</h3>
+          <p>Open to internships, entry‑level roles, and collaboration.</p>
+          <p><b>Phone:</b> <a href="tel:+918328297397" style="color:inherit">+91 83282 97397</a><br>
+             <b>Email:</b> <a href="mailto:ramalaxminayana000@gmail.com" style="color:inherit">ramalaxminayana000@gmail.com</a><br>
+             <b>Address:</b> Kesavarayunipalem, Laveru, Srikakulam, Andhra Pradesh — 532403
+          </p>
+        </div>
+        <div class="tile">
+          <h3>Quick Message</h3>
+          <form onsubmit="event.preventDefault(); alert('Thanks! This demo form can be wired to EmailJS, Google Apps Script, or a backend later.');">
+            <div style="display:grid; gap:10px">
+              <input required placeholder="Your name" style="padding:12px 14px; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.06); color:var(--text)">
+              <input type="email" required placeholder="Your email" style="padding:12px 14px; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.06); color:var(--text)">
+              <textarea rows="4" required placeholder="Your message" style="padding:12px 14px; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.06); color:var(--text)"></textarea>
+              <button class="btn btn-primary" type="submit">Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="extras" style="margin-top:24px">
+      <div class="section-title"><span></span><h2>Extras</h2></div>
+      <div class="grid grid-3">
+        <div class="tile">
+          <h3>Profile</h3>
+          <p class="muted">DOB: 22 Jan 2006 · Gender: Female · Nationality: Indian · Marital Status: Unmarried</p>
+        </div>
+        <div class="tile">
+          <h3>Strengths</h3>
+          <p class="muted">Fast learner, team player, detail‑oriented</p>
+        </div>
+        <div class="tile">
+          <h3>Looking Ahead</h3>
+          <p class="muted">Excited to apply coding skills in real‑world projects, especially beginner‑friendly software roles.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© <span id="year"></span> Nayana Rama Laxmi — All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+  </script>
+</body>
+</html>
